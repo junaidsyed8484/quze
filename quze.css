@@ -1,0 +1,18 @@
+.box-style{
+          float: left;
+          padding: 25px;
+          margin: 0 0 0px 0px;
+          position: relative;
+          text-align: center;
+          vertical-align: top;
+          background: #fff;
+          border-radius: 5px;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+          -webkit-box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
+           box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
+           height: 350px;
+           margin-top: 30px;
+         }
+body{background: rgba(25,25,25,0.08);}

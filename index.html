@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Quze</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="quze.css">
+   </head>
+   <body>
+      <nav class="navbar navbar-default">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <a class="navbar-brand" href="#">Quze</a>
+            </div>
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="#">Home</a></li>
+               <li><a href="#">Page 1</a></li>
+               <li><a href="#">Page 2</a></li>
+               <li><a href="#">Page 3</a></li>
+            </ul>
+         </div>
+      </nav>
+      <div class="container">
+         <h2>Quze Sample Catalog</h2>
+         <div class="col-md-4" style="padding-right: 0;">
+            <div class="form-group">
+               <!-- <label for="usr">Search:</label> -->
+               <input type="text" class="form-control" id="usr">
+            </div>
+         </div>
+         <div class="col-md-2" >
+            <div class="form-group">
+               <button type="button" class="btn btn-info">Search</button>
+            </div>
+         </div>
+         <div class="col-md-2 col-md-offset-4">
+            <div class="dropdown float-right" >
+               <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter Options
+               <span class="caret"></span></button>
+            </div>
+         </div>
+         <div class="col-md-12" > 
+         </div>
+      </div>
+      <footer>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" type="text/javascript">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+         </script>
+         </script>
+         <script type="text/javascript">
+            $( document ).ready(function() {
+            
+            	$.getJSON( "udemy-data.json", function( data ) {
+            	  var items = [];
+            	  //console.log(data);
+                  var row1="";
+                  var img=1;
+            	  $.each( data, function( key, val ) {
+            	  		
+            	  		if(img==6)
+            	  		{	
+            	  			img=1;
+            	  		 }
+            	  		 img++;	
+            	    row1 +='<div class="col-md-3"><div class="catalog box-style"> <img alt=" " class="img-responsive" src="'+img+'.png">';
+            
+            	    row1 +='<h4 class="txt-limit-title" style="padding: 5px;margin-bottom: 0px;">'+ val.title +'</h4>';
+            
+            	    row1 +='<p class="txt-limit" style="padding: 5px;">'+ val.description+'</p>';
+            
+            	    row1 +=' <p style="padding: 5px;">Price: <b>'+ val.price+'</b> </p>';
+            
+            	    row1 +=' </div></div>'; 
+            
+            	   });	
+            	  $( ".col-md-12" ).append( row1 ); 
+            	 
+            	   $(".txt-limit").text(function(index, currentText) {
+            		  var maxLength =70;
+            		  if(currentText.length >= maxLength) {
+            		    return currentText.substr(0, maxLength) + "...";
+            		  } else {
+            		    return currentText
+            		  } 
+            		});
+            
+            	 //   $(".txt-limit-title").text(function(index, currentText) {
+            		//   var maxLength =30;
+            		//   if(currentText.length >= maxLength) {
+            		//     return currentText.substr(0, maxLength) + "...";
+            		//   } else {
+            		//     return currentText
+            		//   } 
+            		// });
+            	  // $( "<ul/>", {
+            	  //   "class": "my-new-list",
+            	  //   html: items.join( "" )
+            	  // }).appendTo( "body" );
+            	});
+            
+            	
+            
+            });
+            
+         </script>
+      </footer>
+   </body>
+</html>
